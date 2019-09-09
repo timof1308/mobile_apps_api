@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Http\ResponseFactory;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class VisitorController extends Controller
 {
@@ -158,5 +160,43 @@ class VisitorController extends Controller
         $visitor->delete();
         // return no content
         return response(null, 204);
+    }
+
+    /**
+     * Generate QR Code for Visitor
+     *
+     * @param $visitorId int to generate QR Code for
+     * @return Response|ResponseFactory|BinaryFileResponse
+     */
+    public function createQr($visitorId)
+    {
+        // find visitor
+        $visitor = Visitor::with(array('meeting', 'company', 'meeting.user', 'meeting.room'))->where('id', $visitorId)->first();
+        // check if room exists
+        if (!isset($visitor)) { // visitor not found
+            return response(null, 404);
+        }
+
+        // specify content
+        $content = array(
+            'id' => $visitor->id,
+            'name' => $visitor->name,
+            'company' => $visitor->company->name,
+            'date' => $visitor->meeting->date,
+            'host_id' => $visitor->meeting->user->id,
+            'host' => $visitor->meeting->user->name
+        );
+
+
+        // define output
+        $path = base_path('storage/files/qrcode.png');
+        $headers = $headers = ['Content-Type' => 'image/png'];
+
+        $qr_code = QrCode::format('png')
+            ->size(400)
+            ->generate(json_encode($content), $path);
+
+        $response = new BinaryFileResponse($path, 200, $headers);
+        return $response;
     }
 }

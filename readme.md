@@ -11,6 +11,7 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
 - [Lumen v5.8](https://lumen.laravel.com/docs/5.8)
 - PostgreSQL Datenbnak
 - [Laravel/SwitftMail](https://laravel.com/docs/5.8/mail) ist installiert und registriert
+- [simplesoftwareio/simple-qrcode](https://github.com/SimpleSoftwareIO/simple-qrcode)
 
 ## Aufbau
 - Models für Datenbank in `app/Models/*.php`

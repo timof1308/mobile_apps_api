@@ -82,6 +82,10 @@ $router->group(['prefix' => 'v0'], function () use ($router) {
         $router->get('{id}', ['as' => 'get_visitor', 'uses' => 'VisitorController@getVisitor']);
         $router->put('{id}', ['as' => 'update_visitor', 'uses' => 'VisitorController@updateVisitor']);
         $router->delete('{id}', ['as' => 'delete_visitor', 'uses' => 'VisitorController@deleteVisitor']);
+
+        $router->group(['prefix' => '{visitorId}'], function () use ($router) {
+            $router->get('qr', ['as' => 'get_qr_code', 'uses' => 'VisitorController@createQr']);
+        });
     });
 
     /**

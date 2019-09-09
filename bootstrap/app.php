@@ -21,7 +21,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+$app->withFacades();
 
 $app->withEloquent();
 
@@ -87,6 +87,10 @@ $app->configure('mail');
 $app->alias('mailer', Illuminate\Mail\Mailer::class);
 $app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
 $app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
+
+// Simple Qr Code
+$app->register(SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class);
+$app->alias('QrCode', SimpleSoftwareIO\QrCode\Facades\QrCode::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use App\Models\Equipment;
 use App\Models\RoomEquipment;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
+use Laravel\Lumen\Http\ResponseFactory;
 
 class RoomEquipmentController extends Controller
 {
@@ -19,6 +23,12 @@ class RoomEquipmentController extends Controller
         //
     }
 
+    /**
+     * Get Room Equipment
+     *
+     * @param $roomId int to search for
+     * @return JsonResponse
+     */
     public function getRoomEquipment($roomId)
     {
         // get room equipment
@@ -26,6 +36,14 @@ class RoomEquipmentController extends Controller
         return response()->json($equipment->toArray(), 200);
     }
 
+    /**
+     * Create Room Equipment
+     *
+     * @param Request $request
+     * @param $roomId int to create for room
+     * @return JsonResponse|Response|ResponseFactory
+     * @throws ValidationException
+     */
     public function createRoomEquipment(Request $request, $roomId)
     {
         // validate input data
@@ -54,6 +72,13 @@ class RoomEquipmentController extends Controller
         return response()->json($room_equipment, 201);
     }
 
+    /**
+     * Delete Room Equipment
+     *
+     * @param $roomId
+     * @param $id int to delete
+     * @return Response|ResponseFactory
+     */
     public function deleteRoomEquipment($roomId, $id)
     {
         // find room_equipment

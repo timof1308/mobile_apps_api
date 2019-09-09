@@ -4,3 +4,5 @@ Homestead.json
 Homestead.yaml
 .env
 .editorconfig
+/storage/files/*.png
+/storage/files/*.svg
