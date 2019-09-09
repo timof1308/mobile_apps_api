@@ -84,7 +84,9 @@ $router->group(['prefix' => 'v0'], function () use ($router) {
         $router->delete('{id}', ['as' => 'delete_visitor', 'uses' => 'VisitorController@deleteVisitor']);
 
         $router->group(['prefix' => '{visitorId}'], function () use ($router) {
-            $router->get('qr', ['as' => 'get_qr_code', 'uses' => 'VisitorController@createQr']);
+            $router->get('check_in', ['as' => 'visitor_check_in', 'uses' => 'VisitorController@checkInVisitor']);
+            $router->get('check_out', ['as' => 'visitor_check_out', 'uses' => 'VisitorController@checkOutVisitor']);
+            $router->get('qr', ['as' => 'get_qr_code', 'uses' => 'VisitorController@getQrCode']);
         });
     });
 
@@ -125,19 +127,19 @@ $router->group(['prefix' => 'v0'], function () use ($router) {
  * 404 Status Code
  */
 $router->group(['prefix' => '{any:.*}'], function () use ($router) {
-    $router->get( '/', function() use ($router) {
+    $router->get('/', function () use ($router) {
         return response("not found", 404);
     });
-    $router->put( '/', function() use ($router) {
+    $router->put('/', function () use ($router) {
         return response("not found", 404);
     });
-    $router->post( '/', function() use ($router) {
+    $router->post('/', function () use ($router) {
         return response("not found", 404);
     });
-    $router->delete( '/', function() use ($router) {
+    $router->delete('/', function () use ($router) {
         return response("not found", 404);
     });
-    $router->patch( '/', function() use ($router) {
+    $router->patch('/', function () use ($router) {
         return response("not found", 404);
     });
 });

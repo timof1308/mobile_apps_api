@@ -26,7 +26,7 @@ class RoomEquipmentController extends Controller
     /**
      * Get Room Equipment
      *
-     * @param $roomId int to search for
+     * @param Integer $roomId to search for
      * @return JsonResponse
      */
     public function getRoomEquipment($roomId)
@@ -40,7 +40,7 @@ class RoomEquipmentController extends Controller
      * Create Room Equipment
      *
      * @param Request $request
-     * @param $roomId int to create for room
+     * @param Integer $roomId to create for room
      * @return JsonResponse|Response|ResponseFactory
      * @throws ValidationException
      */
@@ -76,7 +76,7 @@ class RoomEquipmentController extends Controller
      * Delete Room Equipment
      *
      * @param $roomId
-     * @param $id int to delete
+     * @param Integer $id to delete
      * @return Response|ResponseFactory
      */
     public function deleteRoomEquipment($roomId, $id)

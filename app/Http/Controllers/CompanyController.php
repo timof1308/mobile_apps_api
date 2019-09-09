@@ -36,7 +36,7 @@ class CompanyController extends Controller
     /**
      * Get Company
      *
-     * @param $id int to find
+     * @param Integer $id to find
      * @return JsonResponse|Response|ResponseFactory
      */
     public function getCompany($id)
@@ -79,7 +79,7 @@ class CompanyController extends Controller
      * Update Company
      *
      * @param Request $request
-     * @param $id int to update
+     * @param Integer $id to update
      * @return JsonResponse|Response|ResponseFactory
      * @throws ValidationException
      */
@@ -111,7 +111,7 @@ class CompanyController extends Controller
     /**
      * Delete Company
      *
-     * @param $id int to delete
+     * @param Integer $id to delete
      * @return Response|ResponseFactory
      */
     public function deleteCompany($id)
@@ -130,7 +130,7 @@ class CompanyController extends Controller
     /**
      * Get Visitors assigned to meeting
      *
-     * @param $companyId int to filter
+     * @param Integer $companyId to filter
      * @return JsonResponse
      */
     public function getVisitors($companyId)

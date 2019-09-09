@@ -35,7 +35,7 @@ class EquipmentController extends Controller
     /**
      * Get Equipment
      *
-     * @param $id int to find
+     * @param Integer $id to find
      * @return JsonResponse|Response|ResponseFactory
      */
     public function getEquipment($id)
@@ -80,7 +80,7 @@ class EquipmentController extends Controller
      * Update Equipment
      *
      * @param Request $request
-     * @param $id int to update
+     * @param Integer $id to update
      * @return JsonResponse|Response|ResponseFactory
      * @throws ValidationException
      */
@@ -112,7 +112,7 @@ class EquipmentController extends Controller
     /**
      * Delete Equipment
      *
-     * @param $id int to delete
+     * @param Integer $id to delete
      * @return Response|ResponseFactory
      */
     public function deleteEquipment($id)
