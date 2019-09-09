@@ -71,20 +71,13 @@ class VisitorController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
-            'meeting_id' => 'required|Integer',
-            'company_id' => 'required|Integer',
+            'meeting_id' => 'required|Integer|exists:meetings,id',
+            'company_id' => 'required|Integer|exists:companies,id',
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
             'check_out' => 'nullable|date_format:Y-m-d H:i:s'
         ]);
 
-        // get relations
-        $company = Company::find($request->get("company_id"));
-        $meeting = Company::find($request->get("meeting_id"));
-        // check if relations exists
-        if (!isset($company) || !isset($meeting)) { // relations not
-            return response("missing relation", 404);
-        }
-
+        // create new model
         $visitor = new Visitor();
         $visitor->name = $request->get("name");
         $visitor->email = $request->get("email");
@@ -116,8 +109,8 @@ class VisitorController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
-            'meeting_id' => 'required|Integer',
-            'company_id' => 'required|Integer',
+            'meeting_id' => 'required|Integer|exists:meetings,id',
+            'company_id' => 'required|Integer|exists:companies,id',
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
             'check_out' => 'nullable|date_format:Y-m-d H:i:s'
         ]);

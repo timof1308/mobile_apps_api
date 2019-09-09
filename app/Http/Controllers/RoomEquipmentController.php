@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
-use App\Models\Equipment;
 use App\Models\RoomEquipment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -48,14 +47,13 @@ class RoomEquipmentController extends Controller
     {
         // validate input data
         $this->validate($request, [
-            'equipment_id' => 'required|Integer'
+            'equipment_id' => 'required|Integer|exists:equipment,id'
         ]);
 
         // get relations
         $room = Room::find($roomId);
-        $equipment = Equipment::find($request->get('equipment_id'));
         // check if relations exist
-        if (!isset($room) || !isset($equipment)) { // relations not found
+        if (!isset($room)) { // relations not found
             return response(null, 404);
         }
 

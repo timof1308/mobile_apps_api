@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Mail\MeetingBundleCreated;
 use App\Models\Meeting;
-use App\Models\Room;
-use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -69,19 +67,12 @@ class MeetingController extends Controller
     {
         // validate input data
         $this->validate($request, [
-            'user_id' => 'required|Integer',
-            'room_id' => 'required|Integer',
+            'user_id' => 'required|Integer|exists:users,id',
+            'room_id' => 'required|Integer|exists:rooms,id',
             'date' => 'required|date_format:Y-m-d H:i:s'
         ]);
 
-        // get relations
-        $user = User::find($request->get("user_id"));
-        $room = Room::find($request->get("room_id"));
-        // check if relations exists
-        if (!isset($user) || !isset($room)) { // relations not
-            return response("missing relation", 404);
-        }
-
+        // create new model
         $meeting = new Meeting();
         $meeting->user_id = $request->get("user_id");
         $meeting->room_id = $request->get("room_id");
@@ -103,18 +94,10 @@ class MeetingController extends Controller
     {
         // validate input data
         $this->validate($request, [
-            'user_id' => 'required|Integer',
-            'room_id' => 'required|Integer',
+            'user_id' => 'required|Integer|exists:users,id',
+            'room_id' => 'required|Integer|exists:rooms,id',
             'date' => 'required|date_format:Y-m-d H:i:s'
         ]);
-
-        // get relations
-        $user = User::find($request->get("user_id"));
-        $room = Room::find($request->get("room_id"));
-        // check if relations exists
-        if (!isset($user) || !isset($room)) { // relations not
-            return response("missing relation", 404);
-        }
 
         // find meeting
         $meeting = Meeting::with(array('user', 'room'))->where('id', $id)->first();
