@@ -21,7 +21,28 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
 - Controller in `app/Http/Controllers/*Controller.php`
 
     In diesen Controllern werden die Datenbankqueries (abfrage, updates, inserts & deletes) über die Models ausgeführt
-    
+
+#### Meeting & Besucher Shortcut Route
+`POST` --> `/v0/meetings/bundle`
+
+Daten müssen in folgendem Format vorliegen:
+````json
+{
+    "user_id": 1,
+    "room_id": 1,
+    "date": "2000-01-01 12:00:00",
+    "visitor": [
+        {
+            "name": "Max Mustermann",
+            "email": "example@example.com",
+            "company_id": 1,
+            "check_in": "OPTIONAL",
+            "check_out": "OPTIONAL"
+        },
+        ...
+    ]
+}
+````
 
 ## Setup
 - [Composer](https://getcomposer.org/download/) herunterladen
