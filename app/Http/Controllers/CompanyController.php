@@ -61,13 +61,11 @@ class CompanyController extends Controller
     public function createCompany(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
+        // create new model
         $company = new Company();
         $company->name = $request->get("name");
         $company->save();
@@ -86,12 +84,9 @@ class CompanyController extends Controller
     public function updateCompany(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // find company
         $company = Company::find($id);

@@ -65,14 +65,11 @@ class MeetingController extends Controller
     public function createMeeting(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'user_id' => 'required|Integer',
             'room_id' => 'required|Integer',
             'date' => 'required|date_format:Y-m-d H:i:s'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // get relations
         $user = User::find($request->get("user_id"));
@@ -102,14 +99,11 @@ class MeetingController extends Controller
     public function updateMeeting(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'user_id' => 'required|Integer',
             'room_id' => 'required|Integer',
             'date' => 'required|date_format:Y-m-d H:i:s'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // get relations
         $user = User::find($request->get("user_id"));
@@ -153,6 +147,15 @@ class MeetingController extends Controller
         $meeting->delete();
         // return no content
         return response(null, 204);
+    }
+
+    /**
+     * Create meeting and assigned visitors at once
+     * @param Request $request
+     */
+    public function createBundle(Request $request)
+    {
+        //
     }
 
     /**

@@ -9,15 +9,15 @@
 <table>
     <tbody>
     <tr>
-        <td>Date</td>
+        <td>Date:</td>
         <td>{{ $visitor->meeting->date }}</td>
     </tr>
     <tr>
-        <td>Meeting Host</td>
+        <td>Meeting Host:</td>
         <td>{{ $visitor->meeting->user->name }}</td>
     </tr>
     <tr>
-        <td>Meeting Room</td>
+        <td>Meeting Room:</td>
         <td>{{ $visitor->meeting->room->name }}</td>
     </tr>
     </tbody>

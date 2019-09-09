@@ -61,15 +61,12 @@ class UserController extends Controller
     public function createUser(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|max:255',
             'role' => 'required|Integer'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         $user = new User();
         $user->name = $request->get('name');
@@ -92,16 +89,13 @@ class UserController extends Controller
     public function updateUser(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|max:255',
             'token' => 'required|Integer',
             'role' => 'required|Integer'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // find user
         $user = User::find($id);

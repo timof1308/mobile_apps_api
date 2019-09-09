@@ -47,12 +47,9 @@ class RoomEquipmentController extends Controller
     public function createRoomEquipment(Request $request, $roomId)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'equipment_id' => 'required|Integer'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // get relations
         $room = Room::find($roomId);

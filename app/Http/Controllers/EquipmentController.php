@@ -60,12 +60,9 @@ class EquipmentController extends Controller
     public function createEquipment(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // create new equipment
         $equipment = new Equipment();
@@ -87,12 +84,9 @@ class EquipmentController extends Controller
     public function updateEquipment(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // find equipment
         $equipment = Equipment::find($id);

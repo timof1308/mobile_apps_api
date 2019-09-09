@@ -68,7 +68,7 @@ class VisitorController extends Controller
     public function createVisitor(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
             'meeting_id' => 'required|Integer',
@@ -76,9 +76,6 @@ class VisitorController extends Controller
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
             'check_out' => 'nullable|date_format:Y-m-d H:i:s'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // get relations
         $company = Company::find($request->get("company_id"));
@@ -116,7 +113,7 @@ class VisitorController extends Controller
     public function updateVisitor(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
             'meeting_id' => 'required|Integer',
@@ -124,9 +121,6 @@ class VisitorController extends Controller
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
             'check_out' => 'nullable|date_format:Y-m-d H:i:s'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // find room
         $visitor = Visitor::with(array('meeting', 'company', 'meeting.user', 'meeting.room'))->where('id', $id)->first();

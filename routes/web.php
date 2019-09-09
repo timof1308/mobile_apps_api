@@ -47,6 +47,8 @@ $router->group(['prefix' => 'v0'], function () use ($router) {
         $router->put('{id}', ['as' => 'update_meeting', 'uses' => 'MeetingController@updateMeeting']);
         $router->delete('{id}', ['as' => 'delete_meeting', 'uses' => 'MeetingController@deleteMeeting']);
 
+        $router->post('', ['as' => 'create_meeting_visitor_bundle', 'uses' => 'MeetingController@createBundle']);
+
         /**
          * /meetings/{meetingId}/visitors routes
          */

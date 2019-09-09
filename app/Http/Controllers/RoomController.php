@@ -60,12 +60,9 @@ class RoomController extends Controller
     public function createRoom(Request $request)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         $room = new Room();
         $room->name = $request->get("name");
@@ -85,12 +82,9 @@ class RoomController extends Controller
     public function updateRoom(Request $request, $id)
     {
         // validate input data
-        $validator = $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required|max:255'
         ]);
-        if (!$validator) {
-            return response()->json($validator, 400);
-        }
 
         // find room
         $room = Room::find($id);
