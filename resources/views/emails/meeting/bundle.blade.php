@@ -1,6 +1,6 @@
 <body>
 
-<h2><i>Your meeting details</i></h2>
+<h3><i>Your meeting details</i></h3>
 
 <h4>Hi {{ $meeting->user->name }},</h4>
 
@@ -12,9 +12,11 @@ Meeting Room: {{ $meeting->room->name }}<br>
 <hr>
 
 Expected visitors:
-@foreach($meeting->visitors as $visitor)
-    <p>{{$visitor->name}} ( {{$visitor->company->name}} ): {{$visitor->email}}</p>
-@endforeach
+<ol>
+    @foreach($meeting->visitors as $visitor)
+        <li>{{$visitor->name}} ( {{$visitor->company->name}} ): {{$visitor->email}}</li>
+    @endforeach
+</ol>
 
 Kind Regards,<br>
 Visitor Management System

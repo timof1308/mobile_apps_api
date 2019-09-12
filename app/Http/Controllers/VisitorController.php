@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VisitorCheckedIn;
 use App\Mail\VisitorCreated;
 use App\Models\Company;
 use App\Models\Meeting;
@@ -197,6 +198,9 @@ class VisitorController extends Controller
         $now = new \DateTime();
         $visitor->check_in = $now->format('Y-m-d H:i:s');
         $visitor->save();
+
+        // send mail to host
+        Mail::to($visitor->meeting->user->email)->send(new VisitorCheckedIn($visitor));
 
         return response()->json($visitor->toArray(), 200);
     }

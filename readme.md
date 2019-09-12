@@ -21,6 +21,12 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
 - Controller in `app/Http/Controllers/*Controller.php`
 
     In diesen Controllern werden die Datenbankqueries (abfrage, updates, inserts & deletes) über die Models ausgeführt
+- Mail Versand bei:
+    - Update Meeting und neuem Datum: allen Teilnehmern ein Update geschickt (`app/Mail/MeetingUpdated.php`)
+    - Delete Meeting: allen Teilnehmern eine Absage zugeschickt (`app/Mail/MeetingCanceled.php`)
+    - Create Bundle: dem User werden die Meeting Daten und eine Auflistung aller Teilnehmer zugeschickt (`app/Mail/MeetingBundleCreated.php`) +
+    - Create Visitor: dem neuem Besuch werden die Meeting Informationen zugeschickt (`app/Mail/VisitorCreated.php`)
+    - Check In Visitor: dem Veranstalter wird eine Infromation geschickt, dass der Gast eingetroffen ist (`app/Mail/VisitorCheckedIn.php`)
 
 #### Meeting & Besucher Shortcut Route
 `POST` --> `/v0/meetings/bundle`
@@ -38,8 +44,7 @@ Daten müssen in folgendem Format vorliegen:
             "company_id": 1,
             "check_in": "OPTIONAL",
             "check_out": "OPTIONAL"
-        },
-        ...
+        }
     ]
 }
 ````

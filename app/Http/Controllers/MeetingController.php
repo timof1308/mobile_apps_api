@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MeetingBundleCreated;
+use App\Mail\MeetingCanceled;
+use App\Mail\MeetingUpdated;
 use App\Models\Meeting;
 use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
@@ -100,10 +102,17 @@ class MeetingController extends Controller
         ]);
 
         // find meeting
-        $meeting = Meeting::with(array('user', 'room'))->where('id', $id)->first();
+        $meeting = Meeting::with(array('user', 'room', 'visitors', 'visitors.meeting'))->where('id', $id)->first();
         // check if meeting exists
         if (!isset($meeting)) { // meeting not found
             return response(null, 404);
+        }
+
+        $sendUpdate = false; // checker
+        // check if meeting has been rescheduled
+        if ($request->get("date") != $meeting->date) { // compare if dates are the same
+            $sendUpdate = true;
+            $old_date = $meeting->date; // temp save old date for update mail
         }
 
         // update attributes
@@ -112,12 +121,24 @@ class MeetingController extends Controller
         $meeting->date = $request->get("date");
         $meeting->save();
 
+        // send update mail
+        if ($sendUpdate) {
+            // for each visitor that will participate at the meeting
+            foreach ($meeting->visitors as $visitor) {
+                // tmp update meeting date for collection model
+                $visitor->meeting->date = $request->get("date");
+                // send mail
+                Mail::to($visitor->email)->send(new MeetingUpdated($visitor, $old_date));
+            }
+        }
+
         // return meeting
         return response()->json($meeting->toArray(), 200);
     }
 
     /**
      * Delete Meeting
+     * send Mail to all participants / visitors
      *
      * @param Integer $id to delete
      * @return Response|ResponseFactory
@@ -130,6 +151,14 @@ class MeetingController extends Controller
         if (!isset($meeting)) { // meeting not found
             return response(null, 404);
         }
+
+        // get all visitors for meeting
+        $visitors = Visitor::with(array('meeting'))->where('meeting_id', $id)->get();
+        foreach ($visitors as $visitor) {
+            // send mail
+            Mail::to($visitor->email)->send(new MeetingCanceled($visitor));
+        }
+
         $meeting->delete();
         // return no content
         return response(null, 204);

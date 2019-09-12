@@ -1,6 +1,6 @@
 <body>
 
-<h2><i>Your meeting details</i></h2>
+<h3><i>Your meeting details</i></h3>
 
 <h4>Dear {{ $visitor->name }},</h4>
 

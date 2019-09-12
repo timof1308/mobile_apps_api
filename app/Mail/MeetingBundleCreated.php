@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Mail;
+
 use App\Models\Meeting;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -33,6 +35,6 @@ class MeetingBundleCreated extends Mailable
             ->with([
                 'meeting' => $this->meeting
             ])
-            ->subject('Your appointment');
+            ->subject('Your meeting information');
     }
 }

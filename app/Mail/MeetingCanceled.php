@@ -8,23 +8,20 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 
-class VisitorCreated extends Mailable
+class MeetingCanceled extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $visitor;
-    public $attachment_path;
 
     /**
      * Create a new message instance.
      *
      * @param Visitor $visitor
-     * @param String $attachment_path
      */
-    public function __construct(Visitor $visitor, String $attachment_path)
+    public function __construct(Visitor $visitor)
     {
         $this->visitor = $visitor;
-        $this->attachment_path = $attachment_path;
     }
 
     /**
@@ -34,14 +31,10 @@ class VisitorCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.visitor.created')
+        return $this->view('emails.meeting.cancel')
             ->with([
                 'visitor' => $this->visitor
             ])
-            ->subject('Your appointment')
-            ->attach($this->attachment_path, array(
-                'as' => 'QR-Code.png',
-                'mime' => 'image/png'
-            ));
+            ->subject('Your appointment was canceled');
     }
 }
