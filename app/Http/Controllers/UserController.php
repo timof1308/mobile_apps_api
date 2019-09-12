@@ -71,7 +71,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = hash('sha256', $request->get('password'));
         $user->role = $request->get('role');
         $user->save();
 
@@ -92,8 +92,8 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255',
-            'password' => 'required|max:255',
-            'token' => 'required|Integer',
+            'password' => 'nullable|max:255',
+            'token' => 'nullable|Integer',
             'role' => 'required|Integer'
         ]);
 
@@ -107,7 +107,7 @@ class UserController extends Controller
 
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->password = $request->get('password');
+        $user->password = hash('sha256', $request->get('password'));
         $user->token = $request->get('token');
         $user->role = $request->get('role');
         $user->save();

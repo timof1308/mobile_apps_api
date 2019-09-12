@@ -14,11 +14,22 @@
 /**
  * home route
  */
+
+use Laravel\Lumen\Http\Request;
+
 $router->get('/', function () use ($router) {
     return 'Mobile Apps RESTful API';
 });
 
-$router->group(['prefix' => 'v0'], function () use ($router) {
+/**
+ * AUTHENTICATION ROUTES
+ */
+$router->post('/auth/login', ['as' => 'login', 'uses' => 'AuthController@authenticate']);
+$router->post('/auth/register', ['as' => 'register', 'uses' => 'AuthController@register']);
+$router->post('/auth/forget', ['as' => 'forget', 'uses' => 'AuthController@forget']);
+$router->post('/auth/reset', ['as' => 'reset', 'uses' => 'AuthController@reset']);
+
+$router->group(['prefix' => 'v0', 'middleware' => 'auth'], function () use ($router) {
     /**
      * /users routes
      */

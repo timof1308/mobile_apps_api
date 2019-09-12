@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use App\User;
+use App\Models\User;
+use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,8 +32,10 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            if ($request->header('Authorization')) {
+                $encoded_jwt = $request->header('Authorization');
+                $jwt = JWT::decode($encoded_jwt, env('JWT_SECRET'), array('HS256'));
+                return User::find($jwt->id);
             }
         });
     }
