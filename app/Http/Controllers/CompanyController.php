@@ -70,7 +70,7 @@ class CompanyController extends Controller
         $company->name = $request->get("name");
         $company->save();
 
-        return response()->json($company, 201);
+        return response()->json($company, 201, ['Location' => route('get_company', ['id' => $company->id])]);
     }
 
     /**

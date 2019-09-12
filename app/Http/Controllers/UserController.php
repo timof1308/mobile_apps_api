@@ -75,7 +75,7 @@ class UserController extends Controller
         $user->role = $request->get('role');
         $user->save();
 
-        return response()->json($user, 201);
+        return response()->json($user, 201, ['Location' => route('get_user', ['id' => $user->id])]);
     }
 
     /**

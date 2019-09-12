@@ -81,7 +81,7 @@ class MeetingController extends Controller
         $meeting->date = $request->get("date");
         $meeting->save();
 
-        return response()->json($meeting, 201);
+        return response()->json($meeting, 201, ['Location' => route('get_meeting', ['id' => $meeting->id])]);
     }
 
     /**
@@ -211,7 +211,7 @@ class MeetingController extends Controller
         $this->sendMailBundle($meeting->id);
 
         // return response
-        return response()->json($meeting->toArray(), 201);
+        return response()->json($meeting->toArray(), 201, ['Location' => route('get_meeting', ['id' => $meeting->id])]);
     }
 
     /**

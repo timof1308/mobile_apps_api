@@ -70,7 +70,7 @@ class EquipmentController extends Controller
         $equipment->save();
 
         // return equipment
-        return response()->json($equipment, 201);
+        return response()->json($equipment, 201, ['Location' => route('get_equipment', ['id' => $equipment->id])]);
     }
 
     /**

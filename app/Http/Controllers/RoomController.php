@@ -68,7 +68,7 @@ class RoomController extends Controller
         $room->name = $request->get("name");
         $room->save();
 
-        return response()->json($room, 201);
+        return response()->json($room, 201, ['Location' => route('get_room', ['id' => $room->id])]);
     }
 
     /**

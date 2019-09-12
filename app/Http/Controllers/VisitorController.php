@@ -93,7 +93,7 @@ class VisitorController extends Controller
         // send mail
         $this->sendMail($v);
 
-        return response()->json($v->toArray(), 201);
+        return response()->json($v->toArray(), 201, ['Location' => route('get_visitor', ['id' => $visitor->id])]);
     }
 
     /**
