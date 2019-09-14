@@ -161,6 +161,8 @@ class AuthController extends BaseController
 
         // update password with sha256 hash
         $user->password = hash("sha256", $this->request->input('password'));
+        // reset token
+        $user->token = null;
         $user->save();
 
         return response(null, 200);

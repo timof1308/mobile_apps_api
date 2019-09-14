@@ -29,6 +29,18 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
     - Create Visitor: dem neuem Besuch werden die Meeting Informationen zugeschickt (`app/Mail/VisitorCreated.php`)
     - Check In Visitor: dem Veranstalter wird eine Infromation geschickt, dass der Gast eingetroffen ist (`app/Mail/VisitorCheckedIn.php`)
 
+## Routen
+- `auth/login` zum Login mit "email" & "password"
+- `auth/register` zum Registrieren mit "name", "email", "password" & "role"
+- `auth/forget` zum Wiederherstellen des Passworts mit "email"
+- `auth/reset` zum Setzen des neuen Passworts mit "email", "token", "password" & "password_confirmation"
+
+> alle API Routen benötigen den über `auth/login` angeforderten JWT der bei jedem Request als Header übergeben werden muss:
+
+````bash
+Authorization {{JSON_WEB_TOKEN}}
+````
+
 #### Meeting & Besucher Shortcut Route
 `POST` --> `/v0/meetings/bundle`
 
