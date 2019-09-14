@@ -29,7 +29,10 @@ $router->post('/auth/register', ['as' => 'register', 'uses' => 'AuthController@r
 $router->post('/auth/forget', ['as' => 'forget', 'uses' => 'AuthController@forget']);
 $router->post('/auth/reset', ['as' => 'reset', 'uses' => 'AuthController@reset']);
 
-$router->group(['prefix' => 'v0', 'middleware' => 'auth'], function () use ($router) {
+/**
+ * API ROUTES
+ */
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     /**
      * /users routes
      */

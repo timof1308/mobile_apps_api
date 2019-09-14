@@ -1,0 +1,1175 @@
+{
+    "variables": [],
+    "info": {
+        "name": "MobileAppsApi",
+        "_postman_id": "d024f472-939b-004b-5730-18a2b76c3129",
+        "description": "",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "companies",
+            "description": "",
+            "item": [
+                {
+                    "name": "get company",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get all companies",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create company",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update company",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "new name company",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete company",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get company visitors",
+                    "request": {
+                        "url": "http://localhost:8000/api/companies/{{companyId}}/visitors",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "equipment",
+            "description": "",
+            "item": [
+                {
+                    "name": "get equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get all equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/equipment",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/equipment",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "meetings",
+            "description": "",
+            "item": [
+                {
+                    "name": "get meeting",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "user_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "room_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get all meetings",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create meeting",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "user_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "room_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update meeting",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "user_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "room_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete meeting",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "user_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "room_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get meeting visitors",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings/{{meetingId}}/visitors",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create bundle",
+                    "request": {
+                        "url": "http://localhost:8000/api/meetings/bundle",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n\t\"user_id\": 2,\n\t\"room_id\": 2,\n\t\"date\": \"2019-09-09 12:00:00\",\n\t\"visitor\": [\n\t\t{\n\t\t\t\"name\": \"Member 1\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"company_id\": 1,\n\t\t\t\"check_in\": \"\",\n\t\t\t\"check_out\": \"\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Member 2\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"company_id\": 2\n\t\t}\n\t]\n}\n"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "rooms",
+            "description": "",
+            "item": [
+                {
+                    "name": "get all rooms",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get room",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create room",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update room",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete room",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get room equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create room equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "equipment_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete room equipment",
+                    "request": {
+                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment/{{roomEquipmentId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "users",
+            "description": "",
+            "item": [
+                {
+                    "name": "get user",
+                    "request": {
+                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get all users",
+                    "request": {
+                        "url": "http://localhost:8000/api/users",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "create user",
+                    "request": {
+                        "url": "http://localhost:8000/api/users",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update user",
+                    "request": {
+                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "token",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete user",
+                    "request": {
+                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get user meetings",
+                    "request": {
+                        "url": "http://localhost:8000/api/users/{{userId}}/meetings",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "visitors",
+            "description": "",
+            "item": [
+                {
+                    "name": "get visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get all visotors",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "crate visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "company_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "meeting_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "check_in",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "check_out",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "company_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "meeting_id",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "check_in",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "check_out",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "get visitor qr code",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/qr",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "check in visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/check_in",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "check out visotor",
+                    "request": {
+                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/check_out",
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "{{JWT}}",
+                                "description": ""
+                            }
+                        ],
+                        "body": {},
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}

@@ -46,4 +46,19 @@ class User extends Model
     {
         return $this->belongsToMany('App\Models\Meeting');
     }
+
+    /**
+     * Check if user has min role
+     *
+     * @param $role
+     * @return bool
+     */
+    public function hasMinRole($role)
+    {
+        if ($role < $this->role) { // role is smaller
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

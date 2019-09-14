@@ -9,7 +9,7 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
 
 ## Verwendete Komponenten
 - [Lumen v5.8](https://lumen.laravel.com/docs/5.8)
-- PostgreSQL Datenbnak
+- [PostgreSQL Datenbank](https://www.postgresql.org/)
 - [Laravel/SwitftMail](https://laravel.com/docs/5.8/mail)
 - [simplesoftwareio/simple-qrcode](https://github.com/SimpleSoftwareIO/simple-qrcode)
 - [firebase/php-jwt](https://github.com/firebase/php-jwt)
@@ -28,6 +28,7 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
     - Create Bundle: dem User werden die Meeting Daten und eine Auflistung aller Teilnehmer zugeschickt (`app/Mail/MeetingBundleCreated.php`) +
     - Create Visitor: dem neuem Besuch werden die Meeting Informationen zugeschickt (`app/Mail/VisitorCreated.php`)
     - Check In Visitor: dem Veranstalter wird eine Infromation geschickt, dass der Gast eingetroffen ist (`app/Mail/VisitorCheckedIn.php`)
+- `app/Http/Middleware/RoleMiddleware.php` zum Checken, ob die Rolle des authentifizierten (über JWT) Users <b>mindestens</b> vorliegt
 
 ## Routen
 - `auth/login` zum Login mit "email" & "password"
@@ -40,6 +41,8 @@ In diesem Fall wird eine Emfpangs- & Meetingapplikation entwickelt, mit der Mita
 ````bash
 Authorization {{JSON_WEB_TOKEN}}
 ````
+
+- Postman Collection mit Routen, Header und Body: `postman_collection.json`
 
 #### Meeting & Besucher Shortcut Route
 `POST` --> `/v0/meetings/bundle`
