@@ -6,6 +6,7 @@ CREATE TABLE "users"
     name     VARCHAR(255),
     email    VARCHAR(255),
     password VARCHAR(255),
+    tel      VARCHAR(255),
     role     INT,
     token    INT
 );
@@ -40,6 +41,7 @@ CREATE TABLE "meetings"
     id      SERIAL PRIMARY KEY, /* auto increment */
     user_id INT REFERENCES users (id) ON DELETE SET NULL,
     room_id INT REFERENCES rooms (id) ON DELETE SET NULL,
+    duration INT,
     date    TIMESTAMP
 );
 
