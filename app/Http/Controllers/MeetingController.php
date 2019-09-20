@@ -198,6 +198,7 @@ class MeetingController extends Controller
         $meeting->user_id = $request->get('user_id');
         $meeting->room_id = $request->get('room_id');
         $meeting->date = $request->get('date');
+        $meeting->duration = $request->get('duration');
         $meeting->save();
 
         // for each visitor in array
@@ -205,6 +206,7 @@ class MeetingController extends Controller
             $visitor = new Visitor();
             $visitor->name = $v["name"];
             $visitor->email = $v["email"];
+            $visitor->tel = $v["tel"];
             $visitor->company_id = $v["company_id"];
             $visitor->meeting_id = $meeting->id;
             $visitor->check_in = isset($v["check_in"]) ? ($v["check_in"] != "" ? $v["check_in"] : null) : null;

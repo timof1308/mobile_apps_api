@@ -10,7 +10,7 @@
     <tbody>
     <tr>
         <td>Date:</td>
-        <td>{{ $visitor->meeting->date }}</td>
+        <td>{{ $date_start }} to {{ $date_end }}</td>
     </tr>
     <tr>
         <td>Meeting Host:</td>

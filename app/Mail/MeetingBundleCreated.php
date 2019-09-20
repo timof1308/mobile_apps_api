@@ -37,12 +37,13 @@ class MeetingBundleCreated extends Mailable
         // PREPARE MEETING DATE TIMES
         // date time for meeting date
         $dt_start = new DateTime($this->meeting->date);
-        // get end date time for meeting by adding meeting duration
-        $dt_end = $dt_start->add(new DateInterval('PT' . $this->meeting->duration . 'M'));
+        $dt_end = new DateTime($this->meeting->date);
+        // get end date time for meeting by adding meeting duration (minutes)
+        $dt_end->add(new DateInterval('PT' . $this->meeting->duration . 'M'));
 
         // format date time to string
         $s_start = $dt_start->format('Y-m-d H:i');
-        $s_end = $dt_end->format('Y-m-d H:i');
+        $s_end = $dt_end->format('H:i');
 
         return $this->view('emails.meeting.bundle')
             ->with([
