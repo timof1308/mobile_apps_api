@@ -71,7 +71,8 @@ class MeetingController extends Controller
         $this->validate($request, [
             'user_id' => 'required|Integer|exists:users,id',
             'room_id' => 'required|Integer|exists:rooms,id',
-            'date' => 'required|date_format:Y-m-d H:i:s'
+            'date' => 'required|date_format:Y-m-d H:i:s',
+            'duration' => 'required|Integer'
         ]);
 
         // create new model
@@ -79,6 +80,7 @@ class MeetingController extends Controller
         $meeting->user_id = $request->get("user_id");
         $meeting->room_id = $request->get("room_id");
         $meeting->date = $request->get("date");
+        $meeting->duration = $request->get("duration");
         $meeting->save();
 
         return response()->json($meeting, 201, ['Location' => route('get_meeting', ['id' => $meeting->id])]);
@@ -98,7 +100,8 @@ class MeetingController extends Controller
         $this->validate($request, [
             'user_id' => 'required|Integer|exists:users,id',
             'room_id' => 'required|Integer|exists:rooms,id',
-            'date' => 'required|date_format:Y-m-d H:i:s'
+            'date' => 'required|date_format:Y-m-d H:i:s',
+            'duration' => 'required|Integer'
         ]);
 
         // find meeting
@@ -110,15 +113,17 @@ class MeetingController extends Controller
 
         $sendUpdate = false; // checker
         // check if meeting has been rescheduled
-        if ($request->get("date") != $meeting->date) { // compare if dates are the same
+        if ($request->get("date") != $meeting->date || $request->get("duration") != $meeting->duration) { // compare if dates or duration are the same
             $sendUpdate = true;
             $old_date = $meeting->date; // temp save old date for update mail
+            $old_duration = $meeting->date; // temp save old duration for update mail
         }
 
         // update attributes
         $meeting->user_id = $request->get("user_id");
         $meeting->room_id = $request->get("room_id");
         $meeting->date = $request->get("date");
+        $meeting->duration = $request->get("duration");
         $meeting->save();
 
         // send update mail
@@ -127,8 +132,9 @@ class MeetingController extends Controller
             foreach ($meeting->visitors as $visitor) {
                 // tmp update meeting date for collection model
                 $visitor->meeting->date = $request->get("date");
+                $visitor->meeting->duration = $request->get("duration");
                 // send mail
-                Mail::to($visitor->email)->send(new MeetingUpdated($visitor, $old_date));
+                Mail::to($visitor->email)->send(new MeetingUpdated($visitor, $old_date, $old_duration));
             }
         }
 
@@ -177,9 +183,11 @@ class MeetingController extends Controller
             'user_id' => 'required|Integer|exists:users,id', // meeting details
             'room_id' => 'required|Integer|exists:rooms,id', // check if relation exists
             'date' => 'required|date_format:Y-m-d H:i:s',
+            'duration' => 'required|Integer',
             'visitor' => 'required|array|min:1', // array is required with at least one member
             'visitor.*.name' => 'required|max:255', // each visitor name ...
             'visitor.*.email' => 'required|email',
+            'visitor.*.tel' => 'required|max:255',
             'visitor.*.company_id' => 'required|Integer|exists:companies,id',
             'visitor.*.check_in' => 'nullable|date_format:Y-m-d H:i:s',
             'visitor.*.check_out' => 'nullable|date_format:Y-m-d H:i:s'

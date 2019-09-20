@@ -72,6 +72,7 @@ class VisitorController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
+            'tel' => 'required|max:255',
             'meeting_id' => 'required|Integer|exists:meetings,id',
             'company_id' => 'required|Integer|exists:companies,id',
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
@@ -82,6 +83,7 @@ class VisitorController extends Controller
         $visitor = new Visitor();
         $visitor->name = $request->get("name");
         $visitor->email = $request->get("email");
+        $visitor->tel = $request->get("tel");
         $visitor->company_id = $request->get("company_id");
         $visitor->meeting_id = $request->get("meeting_id");
         $visitor->check_in = $request->get("check_in") != "" ? $request->get('check_in') : null;
@@ -110,6 +112,7 @@ class VisitorController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email',
+            'tel' => 'required|max:255',
             'meeting_id' => 'required|Integer|exists:meetings,id',
             'company_id' => 'required|Integer|exists:companies,id',
             'check_in' => 'nullable|date_format:Y-m-d H:i:s',
@@ -135,6 +138,7 @@ class VisitorController extends Controller
         // update attributes
         $visitor->name = $request->get("name");
         $visitor->email = $request->get("email");
+        $visitor->tel = $request->get("tel");
         $visitor->company_id = $request->get("company_id");
         $visitor->meeting_id = $request->get("meeting_id");
         $visitor->check_in = $request->get("check_in") != "" ? $request->get('check_in') : null;
@@ -253,6 +257,7 @@ class VisitorController extends Controller
         $content = array(
             'id' => $visitor->id,
             'name' => $visitor->name,
+            'tel' => $visitor->tel,
             'company' => $visitor->company->name,
             'date' => $visitor->meeting->date,
             'host_id' => $visitor->meeting->user->id,

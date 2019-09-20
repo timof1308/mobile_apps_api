@@ -53,6 +53,7 @@ Daten müssen in folgendem Format vorliegen:
     "user_id": 1,
     "room_id": 1,
     "date": "2000-01-01 12:00:00",
+    "duration": 90,
     "visitor": [
         {
             "name": "Max Mustermann",
@@ -66,7 +67,9 @@ Daten müssen in folgendem Format vorliegen:
 ````
 
 ## Setup
+- PHP muss installiert sein (XAMPP für Windows; für MacOs bereits installiert)
 - [Composer](https://getcomposer.org/download/) herunterladen
 - `composer install` im Dateipfad ausführen zum installieren der Packages
 - Datei `.env.example` kopieren zu `.env` und die fehlenden Felder (APP_KEY, Passwörter) ergänzen
+- `dump.sql` in PostgreSQL importieren
 - Lokal ausführen mit: `php -S localhost:8000 -t public`

@@ -2,11 +2,167 @@
     "variables": [],
     "info": {
         "name": "MobileAppsApi",
-        "_postman_id": "d024f472-939b-004b-5730-18a2b76c3129",
+        "_postman_id": "35c80f0e-3710-f820-d1c8-314a39e7ed17",
         "description": "",
         "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
     },
     "item": [
+        {
+            "name": "auth",
+            "description": "",
+            "item": [
+                {
+                    "name": "login",
+                    "request": {
+                        "url": "http://localhost:8000/auth/login",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "register",
+                    "request": {
+                        "url": "http://localhost:8000/auth/register",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "name",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "forget",
+                    "request": {
+                        "url": "http://localhost:8000/auth/forget",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "reset",
+                    "request": {
+                        "url": "http://localhost:8000/auth/reset",
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
+                                "description": ""
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": [
+                                {
+                                    "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password_confirmation",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "token",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        },
         {
             "name": "companies",
             "description": "",
@@ -28,7 +184,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -50,7 +209,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -131,7 +293,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -148,7 +313,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -304,7 +472,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -366,7 +537,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -380,6 +554,11 @@
                             {
                                 "key": "Authorization",
                                 "value": "{{JWT}}",
+                                "description": ""
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/x-www-form-urlencoded",
                                 "description": ""
                             }
                         ],
@@ -400,6 +579,12 @@
                                 },
                                 {
                                     "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "duration",
                                     "value": "",
                                     "description": "",
                                     "type": "text"
@@ -444,6 +629,12 @@
                                 },
                                 {
                                     "key": "date",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "duration",
                                     "value": "",
                                     "description": "",
                                     "type": "text"
@@ -510,7 +701,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -534,7 +728,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n\t\"user_id\": 2,\n\t\"room_id\": 2,\n\t\"date\": \"2019-09-09 12:00:00\",\n\t\"visitor\": [\n\t\t{\n\t\t\t\"name\": \"Member 1\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"company_id\": 1,\n\t\t\t\"check_in\": \"\",\n\t\t\t\"check_out\": \"\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Member 2\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"company_id\": 2\n\t\t}\n\t]\n}\n"
+                            "raw": "{\n\t\"user_id\": 2,\n\t\"room_id\": 2,\n\t\"date\": \"2019-09-09 12:00:00\",\n\t\"duration\": 90,\n\t\"visitor\": [\n\t\t{\n\t\t\t\"name\": \"Member 1\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"tel\": \"+49 1234 567890\",\n\t\t\t\"company_id\": 1,\n\t\t\t\"check_in\": \"\",\n\t\t\t\"check_out\": \"\"\n\t\t},\n\t\t{\n\t\t\t\"name\": \"Member 2\",\n\t\t\t\"email\": \"timo@famfischer.eu\",\n\t\t\t\"tel\": \"+49 1234 567890\",\n\t\t\t\"company_id\": 2\n\t\t}\n\t]\n}\n"
                         },
                         "description": ""
                     },
@@ -558,7 +752,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -575,7 +772,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -688,7 +888,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -742,7 +945,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -765,7 +971,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -782,7 +991,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -905,7 +1117,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -922,7 +1137,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -945,7 +1163,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -962,7 +1183,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -995,6 +1219,12 @@
                                 },
                                 {
                                     "key": "email",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "tel",
                                     "value": "",
                                     "description": "",
                                     "type": "text"
@@ -1062,6 +1292,12 @@
                                     "type": "text"
                                 },
                                 {
+                                    "key": "tel",
+                                    "value": "",
+                                    "description": "",
+                                    "type": "text"
+                                },
+                                {
                                     "key": "company_id",
                                     "value": "",
                                     "description": "",
@@ -1108,7 +1344,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -1130,7 +1369,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -1147,7 +1389,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
@@ -1164,7 +1409,10 @@
                                 "description": ""
                             }
                         ],
-                        "body": {},
+                        "body": {
+                            "mode": "raw",
+                            "raw": ""
+                        },
                         "description": ""
                     },
                     "response": []
