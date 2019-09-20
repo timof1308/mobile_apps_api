@@ -58,6 +58,7 @@ Daten müssen in folgendem Format vorliegen:
         {
             "name": "Max Mustermann",
             "email": "example@example.com",
+            "tel": "+49 0123 456789",
             "company_id": 1,
             "check_in": "OPTIONAL",
             "check_out": "OPTIONAL"
