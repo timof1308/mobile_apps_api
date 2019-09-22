@@ -7,7 +7,7 @@
 <p>We would like to inform you that the scheduled meeting for {{ $old_date_start }} has been rescheduled.</p>
 
 <p>Old: <strike>From {{ $old_date_start }} to {{ $old_date_end }}</strike></p>
-<p><span style="color: red">New</span>: <b><u>From {{ $old_date_start }} to {{ $old_date_end }}</u></b></p>
+<p><span style="color: red">New</span>: <b><u>From {{ $date_start }} to {{ $date_end }}</u></b></p>
 
 Apologies for the inconvenience. <br>
 Kind Regards,<br>

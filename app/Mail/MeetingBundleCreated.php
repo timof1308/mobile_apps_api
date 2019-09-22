@@ -8,6 +8,7 @@ use DateTime;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 
 class MeetingBundleCreated extends Mailable
@@ -51,6 +52,10 @@ class MeetingBundleCreated extends Mailable
                 'date_start' => $s_start,
                 'date_end' => $s_end
             ])
+            ->attach(base_path("storage/files/meeting_" . $this->meeting->id . ".ics"), array(
+                'as' => 'meeting.ics',
+                'mime' => 'text/calendar'
+            ))
             ->subject('Your meeting information');
     }
 }

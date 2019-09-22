@@ -8,7 +8,6 @@ use DateTime;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use phpDocumentor\Reflection\Types\Integer;
 
 class MeetingUpdated extends Mailable
 {
@@ -23,9 +22,9 @@ class MeetingUpdated extends Mailable
      *
      * @param Visitor $visitor
      * @param String $old_date
-     * @param Integer $old_duration
+     * @param int $old_duration
      */
-    public function __construct(Visitor $visitor, String $old_date, Integer $old_duration)
+    public function __construct(Visitor $visitor, String $old_date, $old_duration)
     {
         $this->visitor = $visitor;
         $this->old_date = $old_date;
@@ -64,6 +63,10 @@ class MeetingUpdated extends Mailable
                 'date_start' => $s_start,
                 'date_end' => $s_end
             ])
+            ->attach(base_path("storage/files/meeting_" . $this->visitor->meeting->id . ".ics"), array(
+                'as' => 'meeting.ics',
+                'mime' => 'text/calendar'
+            ))
             ->subject('Your appointment was rescheduled');
     }
 }

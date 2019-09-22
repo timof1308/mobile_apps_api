@@ -58,6 +58,10 @@ class VisitorCreated extends Mailable
             ->attach($this->attachment_path, array(
                 'as' => 'QR-Code.png',
                 'mime' => 'image/png'
+            ))
+            ->attach(base_path("storage/files/meeting_" . $this->visitor->meeting->id . ".ics"), array(
+                'as' => 'meeting.ics',
+                'mime' => 'text/calendar'
             ));
     }
 }

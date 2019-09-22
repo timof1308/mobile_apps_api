@@ -298,14 +298,18 @@ class VisitorController extends Controller
      * Send mail with attached QR Code to visitor
      *
      * @param Visitor $visitor
+     * @throws \Exception
      */
     public function sendMail(Visitor $visitor)
     {
+        // generate meeting file
+        $meeting_path = \iCalendar::new_calender_entry($visitor->meeting->id, $visitor->meeting->user->name, $visitor->meeting->user->email, "Meeting details", "Created by VMS-Mobile", (new \DateTime($visitor->meeting->date)), (new \DateTime($visitor->meeting->date))->add(new \DateInterval('PT' . $visitor->meeting->duration . 'M')));
         // generate qr code
         $path = $this->generateQrCode($visitor->id);
         // send mail
         Mail::to($visitor->email)->send(new VisitorCreated($visitor, $path));
         // delete qr code
         unlink($path);
+        unlink($meeting_path);
     }
 }

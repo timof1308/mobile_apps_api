@@ -15,6 +15,9 @@
  * home route
  */
 
+use App\Models\Meeting;
+use App\Models\Visitor;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Lumen\Http\Request;
 
 $router->get('/', function () use ($router) {

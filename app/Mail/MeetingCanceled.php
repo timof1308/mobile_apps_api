@@ -35,6 +35,10 @@ class MeetingCanceled extends Mailable
             ->with([
                 'visitor' => $this->visitor
             ])
+            ->attach(base_path("storage/files/meeting_" . $this->visitor->meeting->id . ".ics"), array(
+                'as' => 'meeting.ics',
+                'mime' => 'text/calendar'
+            ))
             ->subject('Your appointment was canceled');
     }
 }

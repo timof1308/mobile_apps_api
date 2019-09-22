@@ -6,3 +6,4 @@ Homestead.yaml
 .editorconfig
 /storage/files/*.png
 /storage/files/*.svg
+/storage/files/*.ics

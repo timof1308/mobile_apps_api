@@ -93,6 +93,7 @@ class MeetingController extends Controller
      * @param Integer $id to update
      * @return JsonResponse|Response|ResponseFactory
      * @throws ValidationException
+     * @throws \Exception
      */
     public function updateMeeting(Request $request, $id)
     {
@@ -116,7 +117,7 @@ class MeetingController extends Controller
         if ($request->get("date") != $meeting->date || $request->get("duration") != $meeting->duration) { // compare if dates or duration are the same
             $sendUpdate = true;
             $old_date = $meeting->date; // temp save old date for update mail
-            $old_duration = $meeting->date; // temp save old duration for update mail
+            $old_duration = $meeting->duration; // temp save old duration for update mail
         }
 
         // update attributes
@@ -128,6 +129,8 @@ class MeetingController extends Controller
 
         // send update mail
         if ($sendUpdate) {
+            // create meeting file to attach
+            $meeting_path = \iCalendar::update_calender_entry($meeting->id, $meeting->user->name, $meeting->user->email, "Meeting details", "Created by VMS-Mobile", (new \DateTime($meeting->date)), (new \DateTime($meeting->date))->add(new \DateInterval('PT' . $meeting->duration . 'M')));
             // for each visitor that will participate at the meeting
             foreach ($meeting->visitors as $visitor) {
                 // tmp update meeting date for collection model
@@ -136,6 +139,8 @@ class MeetingController extends Controller
                 // send mail
                 Mail::to($visitor->email)->send(new MeetingUpdated($visitor, $old_date, $old_duration));
             }
+            // delete meeting file
+            unlink($meeting_path);
         }
 
         // return meeting
@@ -148,22 +153,25 @@ class MeetingController extends Controller
      *
      * @param Integer $id to delete
      * @return Response|ResponseFactory
+     * @throws \Exception
      */
     public function deleteMeeting($id)
     {
         // find meeting
-        $meeting = Meeting::find($id);
+        $meeting = Meeting::with(array('user', 'room', 'visitors', 'visitors.meeting'))->where('id', $id)->first();
         // check if meeting exists
         if (!isset($meeting)) { // meeting not found
             return response(null, 404);
         }
 
-        // get all visitors for meeting
-        $visitors = Visitor::with(array('meeting'))->where('meeting_id', $id)->get();
-        foreach ($visitors as $visitor) {
+        // for each visitor from meeting
+        $meeting_path = \iCalendar::cancel_calender_entry($meeting->id, $meeting->user->name, $meeting->user->email, "Meeting details", "Created by VMS-Mobile", (new \DateTime($meeting->date)), (new \DateTime($meeting->date))->add(new \DateInterval('PT' . $meeting->duration . 'M')));
+        foreach ($meeting->visitors as $visitor) {
             // send mail
             Mail::to($visitor->email)->send(new MeetingCanceled($visitor));
         }
+        // delete meeting file
+        unlink($meeting_path);
 
         $meeting->delete();
         // return no content
@@ -241,11 +249,19 @@ class MeetingController extends Controller
      * Send Mail Bundle to meeting participants
      *
      * @param Integer $meetingId
+     * @throws \Exception
      */
     public function sendMailBundle($meetingId)
     {
         $meeting = Meeting::with(array('user', 'room', 'visitors'))->where('id', $meetingId)->first();
+
+        // create calendar entry file
+        $meeting_path = \iCalendar::new_calender_entry($meeting->id, $meeting->user->name, $meeting->user->email, "Meeting details", "Created by VMS-Mobile", (new \DateTime($meeting->date)), (new \DateTime($meeting->date))->add(new \DateInterval('PT' . $meeting->duration . 'M')));
+
         // send mail
         Mail::to($meeting->user->email)->send(new MeetingBundleCreated($meeting));
+
+        // delete calendar file
+        unlink($meeting_path);
     }
 }
