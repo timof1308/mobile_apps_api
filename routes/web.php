@@ -139,6 +139,12 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
         $router->put('{id}', ['as' => 'update_equipment', 'uses' => 'EquipmentController@updateEquipment']);
         $router->delete('{id}', ['as' => 'delete_equipment', 'uses' => 'EquipmentController@deleteEquipment']);
     });
+
+    $router->group(['prefix' => 'dashboard'], function () use ($router) {
+        $router->get('', ['as' => 'get_dashboard_data_live', 'uses' => 'DashboardController@getLiveData']);
+        $router->get('/week/{date}', ['as' => 'get_dashboard_data_week', 'uses' => 'DashboardController@getWeekData']);
+        $router->get('/companies', ['as' => 'get_dashboard_data_week', 'uses' => 'DashboardController@getCompanyData']);
+    });
 });
 
 /**
