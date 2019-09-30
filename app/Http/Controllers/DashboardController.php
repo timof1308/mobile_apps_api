@@ -104,6 +104,24 @@ class DashboardController extends Controller
     }
 
     /**
+     * Get visitors assigned to date the meeting has been planned
+     *
+     * @param Request $request
+     * @param $date String to filter for date
+     * @return JsonResponse
+     */
+    public function getVisitorData(Request $request, $date)
+    {
+        $response = Visitor::whereHas('meeting', function (Builder $query) use ($date) {
+            $query->whereDate('date', Carbon::parse($date));
+        })
+            ->with(array('meeting', 'meeting.room', 'meeting.user', 'company'))
+            ->get();
+
+        return response()->json($response, 200);
+    }
+
+    /**
      * Get visitor count for each company
      *
      * @return JsonResponse
