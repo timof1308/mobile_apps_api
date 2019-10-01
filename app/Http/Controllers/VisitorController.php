@@ -193,6 +193,11 @@ class VisitorController extends Controller
             return response(null, 404);
         }
 
+        // check if meeting is in the past or future
+        if (!$visitor->meeting->date->isToday()) {
+            return response()->json(array("message" => "can not check in visitor scheduled for a meeting in the past or future"));
+        }
+
         // check if visitor has been checked in
         if ($visitor->check_in != null) { // has already been checked in
             return response()->json(array("message" => "already checked in"), 412);

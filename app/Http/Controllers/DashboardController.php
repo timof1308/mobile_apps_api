@@ -112,6 +112,11 @@ class DashboardController extends Controller
      */
     public function getVisitorData(Request $request, $date)
     {
+        // check if entered date is less than -> in the past
+        if (Carbon::parse($date)->lt(Carbon::today())) {
+            // return empty array json
+            return response()->json(array());
+        }
         $response = Visitor::whereHas('meeting', function (Builder $query) use ($date) {
             $query->whereDate('date', Carbon::parse($date));
         })
