@@ -10,6 +10,7 @@ use App\Models\Visitor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Http\ResponseFactory;
@@ -194,7 +195,7 @@ class VisitorController extends Controller
         }
 
         // check if meeting is in the past or future
-        if (!$visitor->meeting->date->isToday()) {
+        if (date('Ymd', strtotime($visitor->meeting->date)) != date('Ymd')) {
             return response()->json(array("message" => "can not check in visitor scheduled for a meeting in the past or future"));
         }
 
