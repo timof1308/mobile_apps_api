@@ -142,8 +142,10 @@ class VisitorController extends Controller
         $visitor->tel = $request->get("tel");
         $visitor->company_id = $request->get("company_id");
         $visitor->meeting_id = $request->get("meeting_id");
-        $visitor->check_in = $request->get("check_in") != "" ? $request->get('check_in') : null;
-        $visitor->check_out = $request->get("check_out") != "" ? $request->get('check_out') : null;
+        if ($request->has("check_in"))
+            $visitor->check_in = $request->get("check_in");
+        if ($request->has("check_out"))
+            $visitor->check_out = $request->get("check_out");
         $visitor->save();
 
         // update model collection
