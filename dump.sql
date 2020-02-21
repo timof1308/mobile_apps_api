@@ -50,6 +50,7 @@ CREATE TABLE "visitors"
     id         SERIAL PRIMARY KEY, /* auto increment */
     name       VARCHAR(255),
     email      VARCHAR(255),
+    tel        VARCHAR(255),
     company_id INT REFERENCES companies (id) ON DELETE SET NULL,
     meeting_id INT REFERENCES meetings (id) ON DELETE CASCADE,
     check_in   TIMESTAMP DEFAULT NULL,
