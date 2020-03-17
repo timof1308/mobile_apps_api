@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Mail\UserResetPassword;
 use App\Models\User;
+use Firebase\JWT\JWT;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
-use Firebase\JWT\JWT;
-use Illuminate\Http\Request;
 use Laravel\Lumen\Http\ResponseFactory;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
@@ -97,9 +97,26 @@ class AuthController extends BaseController
      *
      * @throws ValidationException
      */
-    public function register()
+    public function register(Request $request)
     {
-        (new UserController())->createUser($this->request);
+        // validate input data
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required|max:255',
+            'role' => 'required|Integer'
+        ]);
+
+        $user = new User();
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = hash('sha256', $request->get('password'));
+        $user->role = $request->get('role');
+        $user->save();
+
+        return response()->json([
+            'token' => $this->jwt($user)
+        ], 200);
     }
 
     /**
