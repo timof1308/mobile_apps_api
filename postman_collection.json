@@ -14,7 +14,7 @@
                 {
                     "name": "login",
                     "request": {
-                        "url": "http://localhost:8000/auth/login",
+                        "url": "{{URL}}/auth/login",
                         "method": "POST",
                         "header": [
                             {
@@ -47,7 +47,7 @@
                 {
                     "name": "register",
                     "request": {
-                        "url": "http://localhost:8000/auth/register",
+                        "url": "{{URL}}/auth/register",
                         "method": "POST",
                         "header": [
                             {
@@ -92,7 +92,7 @@
                 {
                     "name": "forget",
                     "request": {
-                        "url": "http://localhost:8000/auth/forget",
+                        "url": "{{URL}}/auth/forget",
                         "method": "POST",
                         "header": [
                             {
@@ -119,7 +119,7 @@
                 {
                     "name": "reset",
                     "request": {
-                        "url": "http://localhost:8000/auth/reset",
+                        "url": "{{URL}}/auth/reset",
                         "method": "POST",
                         "header": [
                             {
@@ -170,7 +170,7 @@
                 {
                     "name": "get company",
                     "request": {
-                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "url": "{{URL}}/api/companies/{{companyId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -195,7 +195,7 @@
                 {
                     "name": "get all companies",
                     "request": {
-                        "url": "http://localhost:8000/api/companies",
+                        "url": "{{URL}}/api/companies",
                         "method": "GET",
                         "header": [
                             {
@@ -220,7 +220,7 @@
                 {
                     "name": "create company",
                     "request": {
-                        "url": "http://localhost:8000/api/companies",
+                        "url": "{{URL}}/api/companies",
                         "method": "POST",
                         "header": [
                             {
@@ -252,7 +252,7 @@
                 {
                     "name": "update company",
                     "request": {
-                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "url": "{{URL}}/api/companies/{{companyId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -279,7 +279,7 @@
                 {
                     "name": "delete company",
                     "request": {
-                        "url": "http://localhost:8000/api/companies/{{companyId}}",
+                        "url": "{{URL}}/api/companies/{{companyId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -304,7 +304,7 @@
                 {
                     "name": "get company visitors",
                     "request": {
-                        "url": "http://localhost:8000/api/companies/{{companyId}}/visitors",
+                        "url": "{{URL}}/api/companies/{{companyId}}/visitors",
                         "method": "GET",
                         "header": [
                             {
@@ -330,7 +330,7 @@
                 {
                     "name": "get equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "url": "{{URL}}/api/equipment/{{equipmentId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -362,7 +362,7 @@
                 {
                     "name": "get all equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/equipment",
+                        "url": "{{URL}}/api/equipment",
                         "method": "GET",
                         "header": [
                             {
@@ -394,7 +394,7 @@
                 {
                     "name": "create equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/equipment",
+                        "url": "{{URL}}/api/equipment",
                         "method": "POST",
                         "header": [
                             {
@@ -426,7 +426,7 @@
                 {
                     "name": "update equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "url": "{{URL}}/api/equipment/{{equipmentId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -458,7 +458,7 @@
                 {
                     "name": "delete equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/equipment/{{equipmentId}}",
+                        "url": "{{URL}}/api/equipment/{{equipmentId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -489,7 +489,7 @@
                 {
                     "name": "get meeting",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "url": "{{URL}}/api/meetings/{{meetingId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -528,7 +528,7 @@
                 {
                     "name": "get all meetings",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings",
+                        "url": "{{URL}}/api/meetings",
                         "method": "GET",
                         "header": [
                             {
@@ -548,7 +548,7 @@
                 {
                     "name": "create meeting",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings",
+                        "url": "{{URL}}/api/meetings",
                         "method": "POST",
                         "header": [
                             {
@@ -598,7 +598,7 @@
                 {
                     "name": "update meeting",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "url": "{{URL}}/api/meetings/{{meetingId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -648,7 +648,7 @@
                 {
                     "name": "delete meeting",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings/{{meetingId}}",
+                        "url": "{{URL}}/api/meetings/{{meetingId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -692,7 +692,7 @@
                 {
                     "name": "get meeting visitors",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings/{{meetingId}}/visitors",
+                        "url": "{{URL}}/api/meetings/{{meetingId}}/visitors",
                         "method": "GET",
                         "header": [
                             {
@@ -712,7 +712,7 @@
                 {
                     "name": "create bundle",
                     "request": {
-                        "url": "http://localhost:8000/api/meetings/bundle",
+                        "url": "{{URL}}/api/meetings/bundle",
                         "method": "POST",
                         "header": [
                             {
@@ -743,7 +743,7 @@
                 {
                     "name": "get all rooms",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms",
+                        "url": "{{URL}}/api/rooms",
                         "method": "GET",
                         "header": [
                             {
@@ -763,7 +763,7 @@
                 {
                     "name": "get room",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "url": "{{URL}}/api/rooms/{{roomId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -783,7 +783,7 @@
                 {
                     "name": "create room",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms",
+                        "url": "{{URL}}/api/rooms",
                         "method": "POST",
                         "header": [
                             {
@@ -815,7 +815,7 @@
                 {
                     "name": "update room",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "url": "{{URL}}/api/rooms/{{roomId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -847,7 +847,7 @@
                 {
                     "name": "delete room",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}",
+                        "url": "{{URL}}/api/rooms/{{roomId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -879,7 +879,7 @@
                 {
                     "name": "get room equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment",
+                        "url": "{{URL}}/api/rooms/{{roomId}}/equipment",
                         "method": "GET",
                         "header": [
                             {
@@ -899,7 +899,7 @@
                 {
                     "name": "create room equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment",
+                        "url": "{{URL}}/api/rooms/{{roomId}}/equipment",
                         "method": "POST",
                         "header": [
                             {
@@ -931,7 +931,7 @@
                 {
                     "name": "delete room equipment",
                     "request": {
-                        "url": "http://localhost:8000/api/rooms/{{roomId}}/equipment/{{roomEquipmentId}}",
+                        "url": "{{URL}}/api/rooms/{{roomId}}/equipment/{{roomEquipmentId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -962,7 +962,7 @@
                 {
                     "name": "get user",
                     "request": {
-                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "url": "{{URL}}/api/users/{{userId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -982,7 +982,7 @@
                 {
                     "name": "get all users",
                     "request": {
-                        "url": "http://localhost:8000/api/users",
+                        "url": "{{URL}}/api/users",
                         "method": "GET",
                         "header": [
                             {
@@ -1002,7 +1002,7 @@
                 {
                     "name": "create user",
                     "request": {
-                        "url": "http://localhost:8000/api/users",
+                        "url": "{{URL}}/api/users",
                         "method": "POST",
                         "header": [
                             {
@@ -1052,7 +1052,7 @@
                 {
                     "name": "update user",
                     "request": {
-                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "url": "{{URL}}/api/users/{{userId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -1108,7 +1108,7 @@
                 {
                     "name": "delete user",
                     "request": {
-                        "url": "http://localhost:8000/api/users/{{userId}}",
+                        "url": "{{URL}}/api/users/{{userId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -1128,7 +1128,7 @@
                 {
                     "name": "get user meetings",
                     "request": {
-                        "url": "http://localhost:8000/api/users/{{userId}}/meetings",
+                        "url": "{{URL}}/api/users/{{userId}}/meetings",
                         "method": "GET",
                         "header": [
                             {
@@ -1154,7 +1154,7 @@
                 {
                     "name": "get visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}",
                         "method": "GET",
                         "header": [
                             {
@@ -1174,7 +1174,7 @@
                 {
                     "name": "get all visotors",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors",
+                        "url": "{{URL}}/api/visitors",
                         "method": "GET",
                         "header": [
                             {
@@ -1194,7 +1194,7 @@
                 {
                     "name": "crate visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors",
+                        "url": "{{URL}}/api/visitors",
                         "method": "POST",
                         "header": [
                             {
@@ -1262,7 +1262,7 @@
                 {
                     "name": "update visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}",
                         "method": "PUT",
                         "header": [
                             {
@@ -1330,7 +1330,7 @@
                 {
                     "name": "delete visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}",
                         "method": "DELETE",
                         "header": [
                             {
@@ -1355,7 +1355,7 @@
                 {
                     "name": "get visitor qr code",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/qr",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}/qr",
                         "method": "GET",
                         "header": [
                             {
@@ -1380,7 +1380,7 @@
                 {
                     "name": "check in visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/check_in",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}/check_in",
                         "method": "GET",
                         "header": [
                             {
@@ -1400,7 +1400,7 @@
                 {
                     "name": "check out visotor",
                     "request": {
-                        "url": "http://localhost:8000/api/visitors/{{visitorId}}/check_out",
+                        "url": "{{URL}}/api/visitors/{{visitorId}}/check_out",
                         "method": "GET",
                         "header": [
                             {

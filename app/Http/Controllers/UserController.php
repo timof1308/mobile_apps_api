@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Meeting;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -144,7 +145,11 @@ class UserController extends Controller
     public function getMeetings($userId)
     {
         // get meetings for user
-        $meetings = Meeting::with(array('room', 'user'))->where('user_id', $userId)->get();
+        $meetings = Meeting::with(array('room', 'user', 'visitors'))
+            ->where('user_id', $userId)
+            ->whereDate('date', '>=', Carbon::now())
+            ->orderBy('date', 'asc')
+            ->get();
         return response()->json($meetings->toArray(), 200);
     }
 }
