@@ -145,7 +145,7 @@ class UserController extends Controller
     public function getMeetings($userId)
     {
         // get meetings for user
-        $meetings = Meeting::with(array('room', 'user', 'visitors'))
+        $meetings = Meeting::with(array('room', 'user', 'visitors', 'visitors.company'))
             ->where('user_id', $userId)
             ->whereDate('date', '>=', Carbon::now())
             ->orderBy('date', 'asc')
