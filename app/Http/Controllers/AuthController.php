@@ -191,18 +191,12 @@ class AuthController extends BaseController
      */
     function generate_key()
     {
-        $numbers = '0123456789';
+        $numbers = '123456789';
         $numbers_length = strlen($numbers);
         $random_key = '';
         for ($i = 0; $i < 4; $i++) {
             // first integer must be greater than 0 to avoid trimmed integer
             $random = $numbers[rand(0, $numbers_length - 1)];
-            if ($i = 0) {
-                // repeat as long as int is not 0
-                while ($random == "0") {
-                    $random = $numbers[rand(0, $numbers_length - 1)];
-                }
-            }
             $random_key .= $random;
         }
         return $random_key;
